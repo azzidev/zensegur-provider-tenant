@@ -5,7 +5,7 @@ import (
 	"os"
 	"cloud.google.com/go/firestore"
 	"github.com/gin-gonic/gin"
-	"github.com/azzidev/zensegur-provider-tenant/pkg/tenant"
+
 	tenantFirestore "github.com/azzidev/zensegur-provider-tenant/pkg/firestore"
 )
 
