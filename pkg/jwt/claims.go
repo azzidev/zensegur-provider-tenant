@@ -3,7 +3,6 @@ package jwt
 import (
 	"time"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/azzidev/zensegur-provider-tenant/pkg/tenant"
 )
 
 type Claims struct {
@@ -16,11 +15,11 @@ type Claims struct {
 	Iat        int64    `json:"iat"`
 }
 
-func GenerateToken(userID, username string, tenantInfo *tenant.Tenant, roles []string, secret []byte) (string, error) {
+func GenerateToken(userID, username, tenantID, tenantName string, roles []string, secret []byte) (string, error) {
 	claims := Claims{
 		UserID:     userID,
-		TenantID:   tenantInfo.ID,
-		TenantName: tenantInfo.Name,
+		TenantID:   tenantID,
+		TenantName: tenantName,
 		Username:   username,
 		Roles:      roles,
 		Exp:        time.Now().Add(24 * time.Hour).Unix(),
