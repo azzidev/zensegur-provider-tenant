@@ -21,12 +21,7 @@ func main() {
 	// Initialize repository
 	repo := tenantFirestore.NewRepository(client)
 
-	// Initialize config
-	config := &tenant.Config{
-		FirestoreProjectID: os.Getenv("GOOGLE_CLOUD_PROJECT"),
-		JWTSecret:         os.Getenv("JWT_SECRET"),
-		DefaultTenant:     "system",
-	}
+
 
 
 
