@@ -3,7 +3,7 @@ package firestore
 import (
 	"context"
 	"cloud.google.com/go/firestore"
-	"github.com/azzidev/zensegur-tenant/pkg/tenant"
+	"github.com/azzidev/zensegur-provider-tenant/pkg/tenant"
 )
 
 type Repository struct {

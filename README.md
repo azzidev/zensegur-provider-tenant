@@ -1,6 +1,6 @@
-# Zensegur Tenant Framework
+# Zensegur Provider Tenant
 
-Framework para gerenciamento de multi-tenancy nos microservices da Zensegur.
+Provider para gerenciamento de multi-tenancy nos microservices da Zensegur.
 
 ## 🏗️ Estrutura
 
@@ -14,8 +14,8 @@ Framework para gerenciamento de multi-tenancy nos microservices da Zensegur.
 ### 1. Import do framework
 ```go
 import (
-    "github.com/azzidev/zensegur-tenant/pkg/tenant"
-    "github.com/azzidev/zensegur-tenant/pkg/firestore"
+    "github.com/azzidev/zensegur-provider-tenant/pkg/tenant"
+    "github.com/azzidev/zensegur-provider-tenant/pkg/firestore"
 )
 ```
 

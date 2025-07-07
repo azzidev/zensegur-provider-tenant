@@ -3,7 +3,7 @@ package jwt
 import (
 	"time"
 	"github.com/golang-jwt/jwt/v5"
-	"github.com/azzidev/zensegur-tenant/pkg/tenant"
+	"github.com/azzidev/zensegur-provider-tenant/pkg/tenant"
 )
 
 type Claims struct {

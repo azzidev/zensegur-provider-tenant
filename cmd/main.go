@@ -5,8 +5,8 @@ import (
 	"os"
 	"cloud.google.com/go/firestore"
 	"github.com/gin-gonic/gin"
-	"github.com/azzidev/zensegur-tenant/pkg/tenant"
-	"github.com/azzidev/zensegur-tenant/pkg/firestore"
+	"github.com/azzidev/zensegur-provider-tenant/pkg/tenant"
+	"github.com/azzidev/zensegur-provider-tenant/pkg/firestore"
 )
 
 func main() {

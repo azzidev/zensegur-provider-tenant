@@ -1,4 +1,4 @@
-module github.com/azzidev/zensegur-tenant
+module github.com/azzidev/zensegur-provider-tenant
 
 go 1.22
 

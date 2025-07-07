@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 	"github.com/gin-gonic/gin"
-	"github.com/azzidev/zensegur-tenant/pkg/jwt"
+	"github.com/azzidev/zensegur-provider-tenant/pkg/jwt"
 )
 
 type Middleware struct {
