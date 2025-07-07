@@ -6,7 +6,7 @@ import (
 	"cloud.google.com/go/firestore"
 	"github.com/gin-gonic/gin"
 	"github.com/azzidev/zensegur-provider-tenant/pkg/tenant"
-	"github.com/azzidev/zensegur-provider-tenant/pkg/firestore"
+	tenantFirestore "github.com/azzidev/zensegur-provider-tenant/pkg/firestore"
 )
 
 func main() {
@@ -19,7 +19,7 @@ func main() {
 	defer client.Close()
 
 	// Initialize repository
-	repo := firestore.NewRepository(client)
+	repo := tenantFirestore.NewRepository(client)
 
 	// Initialize config
 	config := &tenant.Config{
@@ -28,8 +28,7 @@ func main() {
 		DefaultTenant:     "system",
 	}
 
-	// Initialize middleware
-	middleware := tenant.NewMiddleware(config, repo)
+
 
 	// Setup routes
 	r := gin.Default()
