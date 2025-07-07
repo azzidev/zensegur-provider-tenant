@@ -60,7 +60,8 @@ func getUsers(c *gin.Context) {
 ## 🌐 API Endpoints
 
 - `GET /health` - Health check
-- `GET /api/tenant` - Get current tenant info (protected)
+- `GET /api/tenant/:id` - Get tenant by ID (for auth service)
+- `GET /api/tenant/alias/:alias` - Get tenant by alias (for auth service)
 
 ## 🚀 Deploy
 

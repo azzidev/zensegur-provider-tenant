@@ -34,12 +34,11 @@ func main() {
 	// Setup routes
 	r := gin.Default()
 	
-	// CORS
+	// CORS - Only allow auth service
 	r.Use(func(c *gin.Context) {
-		c.Header("Access-Control-Allow-Origin", "https://portal.zensegur.com.br")
-		c.Header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS")
+		c.Header("Access-Control-Allow-Origin", "https://zensegur.com.br")
+		c.Header("Access-Control-Allow-Methods", "GET, POST, OPTIONS")
 		c.Header("Access-Control-Allow-Headers", "Origin, Content-Type, Authorization")
-		c.Header("Access-Control-Allow-Credentials", "true")
 		if c.Request.Method == "OPTIONS" {
 			c.AbortWithStatus(204)
 			return
@@ -47,18 +46,34 @@ func main() {
 		c.Next()
 	})
 
-	// Public routes
+	// Health check
 	r.GET("/health", func(c *gin.Context) {
 		c.JSON(200, gin.H{"status": "ok"})
 	})
 
-	// Protected routes
+	// Public API for auth service only
 	api := r.Group("/api")
-	api.Use(middleware.AuthMiddleware())
 	{
-		api.GET("/tenant", func(c *gin.Context) {
-			ctx := tenant.FromContext(c)
-			c.JSON(200, ctx)
+		// Get tenant by ID (for auth service)
+		api.GET("/tenant/:id", func(c *gin.Context) {
+			tenantID := c.Param("id")
+			tenantInfo, err := repo.GetByID(c.Request.Context(), tenantID)
+			if err != nil {
+				c.JSON(404, gin.H{"error": "Tenant not found"})
+				return
+			}
+			c.JSON(200, tenantInfo)
+		})
+		
+		// Get tenant by alias (for auth service)
+		api.GET("/tenant/alias/:alias", func(c *gin.Context) {
+			alias := c.Param("alias")
+			tenantInfo, err := repo.GetByAlias(c.Request.Context(), alias)
+			if err != nil {
+				c.JSON(404, gin.H{"error": "Tenant not found"})
+				return
+			}
+			c.JSON(200, tenantInfo)
 		})
 	}
 
